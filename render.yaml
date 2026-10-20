@@ -1,14 +1,14 @@
-# Render 一键部署蓝图（部署教程里会教你在手机上怎么操作）
 services:
   - type: web
     name: kuozhan-server
     runtime: node
     plan: free
+    region: singapore
     buildCommand: npm install
     startCommand: node src/server.js
     envVars:
       - key: JWT_SECRET
-        sync: false          # 部署时在网页上填
+        value: kz_2026_abcdefg123456xyz789
       - key: SMTP_HOST
         value: smtp.qq.com
       - key: SMTP_PORT
@@ -16,13 +16,10 @@ services:
       - key: SMTP_SECURE
         value: "true"
       - key: SMTP_USER
-        sync: false
+        value: 3427451391@qq.com
       - key: SMTP_PASS
-        sync: false
+        value: REPLACE_WITH_QQ_AUTH_CODE
       - key: MAIL_FROM_NAME
-        value: 扩列
+        value: kuozhan
       - key: DB_PATH
-        value: /tmp/app.db
-    # 注意：免费实例磁盘是临时的，重启后注册数据会清空。
-    # 正式内测如需长期保留数据，在 Render 网页上给本服务加一个 Disk（约1美元/月），
-    # 挂载路径填 /var/data，并把 DB_PATH 改成 /var/data/app.db（教程里有）。
+        value: /var/data/app.db
